@@ -25,9 +25,6 @@ fn find_and_replace(replaced: &[&str], replacer: &str, string: &String) -> Strin
 }
 
 fn handle_args(args: Vec<String>) -> Option<(String, String)> {
-    // first arg should be full path to waybar/config.jsonc
-    // second arg should be the replacer
-
     let usage = "USAGE: wcc [FULL PATH] [REPLACER]";
 
     if args.len() != 3 {
@@ -40,11 +37,6 @@ fn handle_args(args: Vec<String>) -> Option<(String, String)> {
     let _ = it.next().unwrap();
     let path = it.next().unwrap();
     let replacer = it.next().unwrap();
-
-    if path.find("/") == None {
-        eprintln!("{}", usage);
-        return None;
-    }
 
     return Some((path, replacer));
 }
